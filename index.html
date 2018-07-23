@@ -991,7 +991,9 @@ and (max-width : 667px) {
 
 <script>
     $(function() {
-            var $mainindex = $('#mainindex').masonry({
+
+            var $mainindex = $('#mainindex');
+            var $msnry = $('#mainindex').masonry({
                 // options...
                 itemSelector : 'article',
                 isFitWidth: true,
@@ -1004,11 +1006,10 @@ and (max-width : 667px) {
             });
 
             $mainindex.imagesLoaded().progress( function() {
-            $mainindex.masonry('article');
+            $mainindex.masonry('layout');
             });
 
-
-            });
+      });
 </script>
 
 <!-- Loader -->
