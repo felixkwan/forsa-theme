@@ -1022,6 +1022,13 @@ and (max-width : 667px) {
       });
 </script>
 
+<script>
+    $(function() {
+        $('.permalinkpage').masonry('destroy');
+        console.log('msnry destroyed');
+    })
+</script>
+
 <!-- Loader -->
 <script>
     var loader = window.onload;
