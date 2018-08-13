@@ -52,10 +52,6 @@
                 background: {BackgroundColor};
             }
 
-            a {
-                color: {color:Link Color};
-            }
-
             a:hover{
                 color:{color:Link Hover};
             }
@@ -431,17 +427,27 @@ article blockquote img {
 #pagination span {
     text-decoration: none;
     font-size: 0.8em;
-    font-weight: 400;
-    color: #363636;
+    font-weight: 300;
+}
+
+.pagination li a {
+    color: {color:Link};
 }
 
 .pagination .new {
     float: left;
+    margin-left: 16px;
 }
 
 .pagination .old {
     float: right;
     text-align: right;
+    margin-right: 16px;
+}
+
+.page-pagination span,
+.page-pagination a {
+    color: {color:Link};
 }
 
 .standard ul.page-pagination {
@@ -458,7 +464,7 @@ ul.page-pagination li {
 }
 
 ul.page-pagination li span {
-    border-bottom: 1px solid #363636;
+    border-bottom: 1px solid {color:Link};
 }
 
 /*-- footer --*/
