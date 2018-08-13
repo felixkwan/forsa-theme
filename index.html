@@ -12,9 +12,6 @@
 
         <link rel="shortcut icon" href="{Favicon}">
 
-        <meta name="font:Title" content="Helvetica Neue"/>
-        <meta name="font:Body" content=""Helvetica Neue", Arial, Helvetica, sans-serif"/>
-
         <meta name="if:Show Archive" content="1"/>
         <meta name="if:Show RSS" content="0"/>
         <meta name="if:Show Search" content="0"/>
@@ -23,18 +20,22 @@
         <meta name="text:URL Google" content=""/>
         <meta name="text:URL Email" content=""/>
         <meta name="text:URL Instagram" content=""/>
+        <meta name="text:Body Google web font" content="Work Sans"/>
 
         <meta name="color:Link" content="#999999"/>
 	    <meta name="color:Link Hover" content="#333333"/>
 
-        <meta name="if:Use Time Ago" content="0"/>
         <meta name="if:Use HighRes Photos" content="1"/>
 
-        <link rel="stylesheet" href="https://static.tumblr.com/6gxc5mm/9yZp06xrd/main-min.css">
+        <meta name="select:Pagination" content="standard" title="standard"/>
+        <meta name="select:Pagination" content="page-number" title="page number"/>
+
         <link rel="stylesheet" href="http://static.tumblr.com/wdg4six/oAvn4uggx/normalize.css">
         {block:IfSyntaxHighlighting}
         <link rel="stylesheet" href="https://static.tumblr.com/ehm1tdz/2VWnye81h/tumblr-highlightjs.css">
         {/block:IfSyntaxHighlighting}
+
+        <link href="https://fonts.googleapis.com/css?family={text:Body Google web font}:300,400,500" rel="stylesheet">
 
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
 
@@ -91,13 +92,17 @@
             }
 
             /*-- body --*/
+html {
+    overflow-x: hidden;
+}
 
 body {
     width:100%;
     height: auto;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: "{text:Body Google web font}", Helvetica, Arial, sans-serif;
     margin:0;
     font-size: 1em;
+    font-weight: 300;
     line-height: 1.8;
     text-align: center;
     word-break: break-word;
@@ -105,6 +110,7 @@ body {
 
 h1,h2,h3,h4,h5,h6 {
     margin: 0;
+    font-weight: 500;
 }
 
 a {
@@ -129,12 +135,11 @@ figure {
     margin: 0 auto;
     opacity: 0;
     transition: 1s ease;
-    height: 100%;
+    height: auto;
 }
 
 #wrapper {
-    width: 90%;
-    margin:0 auto;
+    margin: 0 auto;
     max-width: 1080px;
 }
 
@@ -154,7 +159,7 @@ header {
 }
 header #page-title{
     margin-top: 108px;
-    padding:0;
+    padding: 0;
 }
 
 header #page-title h1{
@@ -170,7 +175,7 @@ header .description {
     letter-spacing: 0.5px;
     padding-bottom: 5px;
     margin: 0 auto;
-    width: 280px;
+    max-width: 280px;
 }
 
 header #main-nav{
@@ -189,7 +194,7 @@ header #main-nav li:last-child{
 
 header #main-nav li a{
     font-size: 1em;
-    font-weight: 400;
+    font-weight: 300;
     letter-spacing: 0.2px;
     text-decoration: none;
     color: #979797;
@@ -233,15 +238,13 @@ header #main-nav li a::after{
 }
 
 article {
-    float:left;
-    margin-bottom: 32px;
+    float: left;
+    margin: 0 auto 32px;
     transition: linear;
-    transition-duration: 0.25s;
-    transition-property: height, width;
     text-align: left;
-    width: 100%;
     overflow: hidden;
     position: relative;
+    width: 332px;
 }
 
 .indexpage article {
@@ -283,6 +286,18 @@ article:after {
     margin: 0;
     padding: 0;
     font-size: 1em !important;
+}
+
+/* media */
+
+article.type_photo img,
+article.type_link img,
+article.type_text img,
+article figure img,
+article blockquote img {
+    width: 100%;
+    height: auto;
+    vertical-align: bottom;
 }
 
 /*-- caption --*/
@@ -382,25 +397,43 @@ article:after {
     width: 100%;
     margin: 0 auto;
     height: auto;
+    vertical-align: bottom;
     overflow: hidden;
 }
 
-#pagination a{
+#pagination a,
+#pagination span {
     text-decoration: none;
     font-size: 0.8em;
     font-weight: 400;
     color: #363636;
-    vertical-align: bottom;
 }
 
-#pagination .new {
+.pagination .new {
     float: left;
 }
 
-#pagination .old {
+.pagination .old {
     float: right;
+    text-align: right;
 }
 
+.standard ul.page-pagination {
+    display: none;
+}
+
+.page-number ul.pagination {
+    display: none;
+}
+
+ul.page-pagination li {
+    display: inline-block;
+    margin: 4px 10px;
+}
+
+ul.page-pagination li span {
+    border-bottom: 1px solid #363636;
+}
 
 /*-- footer --*/
 footer {
@@ -444,39 +477,31 @@ footer .social-link li a:hover{
 
 /*-- responsive --*/
 
-
-@media only screen
-and (min-width : 768px)
-and (max-width : 1024px) {
+@media only screen and (min-width:480px) and (max-width:768px) {
     article {
         width: 212px;
-        margin-right: 25px;
-        margin-left: 25px;
+        margin-right: 12px;
+        margin-left: 12px;
     }
 }
 
-@media only screen
-and (min-width : 414px)
-and (max-width : 736px) {
+@media only screen and (max-width: 320px) {
+    article {
+        width: 202px;
+    }
+}
+
+@media only screen and (min-width:768px) {
     article {
         width: 252px;
-    }
-}
-
-@media only screen
-and (min-width : 375px)
-and (max-width : 667px) {
-    article {
-        width: 100%;
-        margin: 12px auto;
-    }
-}
-
-@media only screen and (min-width:800px) {
-    article {
-        width: 212px;
         margin-right: 25px;
         margin-left: 25px;
+    }
+}
+
+@media only screen and (min-width: 1024px) {
+    article {
+        margin-bottom: 64px;
     }
 }
 
@@ -945,16 +970,27 @@ and (max-width : 667px) {
 
                     {block:IndexPage}
                     {block:Pagination}
-                    <section id="pagination" class="clearfix">
-                            {block:PreviousPage}<a class="new" href="{PreviousPage}">&larr;Newer</a>{/block:PreviousPage}
-                            {block:NextPage}<a class="old" href="{NextPage}">Previous&rarr;</a>{block:NextPage}
+                    <section id="pagination" class="clearfix {select:Pagination}">          <ul class="pagination">
+                        {block:PreviousPage}<li class="new"><a href="{PreviousPage}">&larr;Newer</a></li>{/block:PreviousPage}
+                            {block:NextPage}<li class="old"><a href="{NextPage}">{lang:Previous}&rarr;</a></li>{block:NextPage}
+
+                    </ul>
+
+                        <ul class="page-pagination">
+                            {block:JumpPagination length="3"}{block:CurrentPage}
+            <li><span class="current_page">{PageNumber}</span></li>
+        {/block:CurrentPage}{block:JumpPage}
+            <li><a class="jump_page" href="{URL}">{PageNumber}</a></li>
+        {/block:JumpPage}{/block:JumpPagination}
+                        </ul>
+
                     </section>
                     {/block:Pagination}
                     {/block:Indexpage}
 
 
                         <footer>
-                            <small>&copy; {Title}</small>
+                            <small>&copy; {Title}. Theme by <a href="http://kwanfu101.tumblr.com" style="color: #9c9c9c">kwanfushing</a>.</small>
                             <ul class="social-link">
 				{block:IfURLTwitter}
 					<li><a href="{text:URL Twitter}" target="_blank" title="Twitter"><i class="fab fa-twitter"></i></a></li>
@@ -980,27 +1016,8 @@ and (max-width : 667px) {
 </body>
         <script src="http://static.tumblr.com/wofln30/lFrmyt0d1/jquery.photoset-grid.min.js"></script>
 
-        <script>
-            $('.photoset').photosetGrid({
-              highresLinks: true,
-              rel: 'gallery-01',
-              gutter: '2px',
-
-              onComplete: function(){
-                $('.photoset-grid-lightbox').attr('style', '');
-                $('.photoset-grid-lightbox a.photoset-cell').colorbox({
-                  transition: "fade",
-                  photo: true,
-                  scalePhotos: true,
-                  maxHeight:'90%',
-                  maxWidth:'80%'
-                });
-              }
-            });
-            </script>
-
 <script>
-    $(function() {
+    $(window).load(function() {
 
             var $mainindex = $('#mainindex');
             var $msnry = $('#mainindex').masonry({
@@ -1016,9 +1033,25 @@ and (max-width : 667px) {
             });
 
             $mainindex.imagesLoaded().progress( function() {
-            $mainindex.masonry('layout');
-            });
+                $('.photoset').photosetGrid({
+              highresLinks: true,
+              rel: 'gallery-01',
+              gutter: '2px',
 
+              onComplete: function(){
+                $('.photoset-grid-lightbox').attr('style', '');
+                $('.photoset-grid-lightbox a.photoset-cell').colorbox({
+                  transition: "fade",
+                  photo: true,
+                  scalePhotos: true,
+                  maxHeight:'90%',
+                  maxWidth:'80%'
+                });
+                $mainindex.masonry('layout');
+              }
+
+            });
+        });
       });
 </script>
 
