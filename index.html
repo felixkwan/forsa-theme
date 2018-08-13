@@ -7,6 +7,8 @@
         {block:Description}
         <meta name="description" content="{MetaDescription}">
         {/block:Description}
+        <link rel="alternate" type="application/rss+xml" href="{RSS}">
+        <link rel="shortcut icon" href="{Favicon}">
 
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="if:Show Archive" content="1"/>
@@ -1099,10 +1101,5 @@ footer .social-link li a:hover{
     };
     </script>
     <!--Loader End -->
-
-    <script>
-        var excerpt = $('#excerpt');
-        excerpt.text(excerpt.text().substring(0,125) + '...')
-    </script>
 
 </html>
