@@ -35,7 +35,7 @@
         <link rel="stylesheet" href="https://static.tumblr.com/ehm1tdz/2VWnye81h/tumblr-highlightjs.css">
         {/block:IfSyntaxHighlighting}
 
-        <link href="https://fonts.googleapis.com/css?family={text:Body Google web font}:300,400,500" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family={text:Body Google web font}:300,500" rel="stylesheet">
 
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
 
@@ -46,7 +46,6 @@
 <script src="http://static.tumblr.com/wdg4six/dcIn7ktrq/masonry.pkgd.min.js"></script>
 <script src="http://static.tumblr.com/iwtk77u/Yhym2yygt/jquery.imagesloaded.min.js"></script>
 
-<script src="http://static.tumblr.com/wdg4six/FoRn5cxzf/classie.js"></script>
 
 <title>Forsa</title>
 
@@ -238,17 +237,17 @@ header #main-nav li a::after{
 }
 
 article {
-    float: left;
     margin: 0 auto 32px;
     transition: linear;
     text-align: left;
     overflow: hidden;
     position: relative;
-    width: 332px;
 }
 
 .indexpage article {
+    float: left;
     border-bottom: 1px solid #ccc;
+    width: 332px;
 }
 
 article a {
@@ -308,7 +307,6 @@ article blockquote img {
     width: 5px;
     height: 1px;
     display: block;
-    left: 0;
     background: #979797;
 }
 
@@ -478,7 +476,7 @@ footer .social-link li a:hover{
 /*-- responsive --*/
 
 @media only screen and (min-width:480px) and (max-width:768px) {
-    article {
+    .indepage article {
         width: 212px;
         margin-right: 12px;
         margin-left: 12px;
@@ -486,13 +484,13 @@ footer .social-link li a:hover{
 }
 
 @media only screen and (max-width: 320px) {
-    article {
+    .indexpage article {
         width: 202px;
     }
 }
 
 @media only screen and (min-width:768px) {
-    article {
+    .indexpage article {
         width: 252px;
         margin-right: 25px;
         margin-left: 25px;
@@ -538,15 +536,14 @@ footer .social-link li a:hover{
 
   /*-- permalinkpage --*/
 
+  .permalinkpage article {
+      margin: 0 auto;
+  }
 
   .permalinkpage .post {
       max-width: 600px;
       margin: 0 auto;
       font-size: 0.8em;
-  }
-
-  .permalinkpage article {
-      margin: 0 auto;
   }
 
   .permalinkpage .post-meta{
@@ -588,10 +585,6 @@ footer .social-link li a:hover{
       margin-left: 0;
   }
 
-  .like-btn iframe {
-      margin-bottom: 15px;
-  }
-
   .reblog-btn svg path{
       transition: 0.25s ease;
   }
@@ -610,7 +603,7 @@ footer .social-link li a:hover{
       margin-top: 5px;
   }
 
-  .indexpage .permalink{
+  .indexpage .permalink {
       float:right;
       margin:0;
       padding: 0;
@@ -975,7 +968,7 @@ footer .social-link li a:hover{
                     </ul>
 
                         <ul class="page-pagination">
-                            {block:JumpPagination length="3"}{block:CurrentPage}
+                            {block:JumpPagination length="5"}{block:CurrentPage}
             <li><span class="current_page">{PageNumber}</span></li>
         {/block:CurrentPage}{block:JumpPage}
             <li><a class="jump_page" href="{URL}">{PageNumber}</a></li>
@@ -1012,13 +1005,14 @@ footer .social-link li a:hover{
     </div>
 
 </body>
-        <script src="http://static.tumblr.com/wofln30/lFrmyt0d1/jquery.photoset-grid.min.js"></script>
+
+<script src="http://static.tumblr.com/wofln30/lFrmyt0d1/jquery.photoset-grid.min.js"></script>
 
 <script>
     $(window).load(function() {
 
             var $mainindex = $('#mainindex');
-            var $msnry = $('#mainindex').masonry({
+            var $msnry = $('.indexpage').masonry({
                 // options...
                 itemSelector : 'article',
                 isFitWidth: true,
@@ -1045,19 +1039,13 @@ footer .social-link li a:hover{
                   maxHeight:'90%',
                   maxWidth:'80%'
                 });
-                $mainindex.masonry('layout');
+
+                msnry.layout();
               }
 
             });
         });
       });
-</script>
-
-<script>
-    $(function() {
-        $('.permalinkpage').masonry('destroy');
-        console.log('msnry destroyed');
-    })
 </script>
 
 <!-- Loader -->
