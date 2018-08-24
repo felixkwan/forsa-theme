@@ -830,7 +830,8 @@ footer .social-link li a:hover{
 
                                 {block:Chat}
                                 {block:Title}
-                                <h1 class="post-title" {block:PermalinkPage}{block:Date}{/block:Date}{/block:PermalinkPage}><a href="{Permalink}">{Title}</a></h1>{/block:Title}
+                                <h1 class="post-title"><a href="{Permalink}">{Title}</a></h1>
+                                {/block:Title}
                                     <ul class="conversation">
                                     {block:Lines}
                                         <li class="chat-{Alt}">{block:Label}<span class="label">{Label}</span>{/block:Label} {Line}</li>
