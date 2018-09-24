@@ -593,6 +593,7 @@ footer .social-link li a:hover{
     margin-top: 15px;
     max-width: 600px;
     padding-top: 15px;
+    overflow: hidden;
   }
 
   article aside .meta {
@@ -771,6 +772,7 @@ footer .social-link li a:hover{
                             <article id="{PostID}" class="{PostType}">
                                 <section class="post">
                                 {block:Text}
+
                                             {block:Title}<h1 class="post-title" style="font-weight:600 !important">{Title}</h1>{/block:Title}
                                             {block:Body}
                                                 {Body}
@@ -921,7 +923,7 @@ footer .social-link li a:hover{
 
                                         </figure>
                                         {block:Description}
-						                                  {Description}
+						                {Description}
                                         {/block:Description}
                                     </div>
 				                {/block:Link}
@@ -976,11 +978,7 @@ footer .social-link li a:hover{
                                                     <time datetime="{Year}-{MonthNumber}-{DayOfMonth}" pubdate="pubdate" class="uk">{DayOfMonthWithZero} {Month}, {Year}</time>
                                                 </div>
 
-                                                <ul class="tags">
-                                                    {block:Tags}
-                                                        <li><a href="{TagURL}" class="tag">#{Tag}</a></li>
-                                                    {/block:Tags}
-                                                </ul>
+
                                             </div>
                                             <ul class="share-btn">
                                                     <li class="reblog-btn">{ReblogButton color="grey"  size="20"}</li>
@@ -988,7 +986,11 @@ footer .social-link li a:hover{
                                                 </ul>
                                         </div>
 
-
+<ul class="tags">
+                                                    {block:Tags}
+                                                        <li><a href="{TagURL}" class="tag">#{Tag}</a></li>
+                                                    {/block:Tags}
+                                                </ul>
 
                                                 <section id="notes" class="note-wrapper clearfix">
                                                 {block:NoteCount}<h3>{NoteCountWithLabel}</h3>{/block:NoteCount}
@@ -1030,7 +1032,7 @@ footer .social-link li a:hover{
 
 
                         <footer>
-                            <small>&copy; {Title}. Theme by <a href="https://kwanfu101.tumblr.com" style="color: #9c9c9c">kwanfushing</a>.</small>
+                            <small>&copy; {Title}. Theme by <a href="http://kwanfu101.tumblr.com" style="color: #9c9c9c">kwanfushing</a>.</small>
                             <ul class="social-link">
 				{block:IfURLTwitter}
 					<li><a href="{text:URL Twitter}" target="_blank" title="Twitter"><i class="fab fa-twitter"></i></a></li>
