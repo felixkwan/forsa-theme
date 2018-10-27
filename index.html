@@ -290,8 +290,8 @@ article:after {
 .post {
     font-size: 0.8em;
     padding: 0;
-    width: 100%;
     line-height: 2;
+    width: 100%;
 }
 
 .post blockquote {
@@ -509,25 +509,28 @@ footer .social-link li a:hover{
 
 /*-- responsive --*/
 
-@media only screen and (min-width:480px) and (max-width:768px) {
-    .indepage article {
-        width: 212px;
+@media only screen and (max-width:768px) {
+    .indexpage article {
+        width: 282px;
         margin-right: 12px;
         margin-left: 12px;
     }
-}
 
-@media only screen and (max-width: 320px) {
-    .indexpage article {
-        width: 202px;
+    .permalinkpage article {
+        width: 282px;
+        margin: 0 auto;
     }
 }
 
 @media only screen and (min-width:768px) {
     .indexpage article {
-        width: 252px;
+        width: 262px;
         margin-right: 25px;
         margin-left: 25px;
+    }
+
+    .permalinkpage article {
+        width: 100%;
     }
 }
 
@@ -569,10 +572,6 @@ footer .social-link li a:hover{
   }
 
   /*-- permalinkpage --*/
-
-  .permalinkpage article {
-      margin: 0 auto;
-  }
 
   .permalinkpage .post {
       max-width: 600px;
